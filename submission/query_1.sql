@@ -1,10 +1,12 @@
 with cte_game_details as (
     SELECT
-        ROW_NUMBER() OVER (PARTITION BY game_id, player_id ORDER BY team_id DESC) AS row_num,
+        -- partition by game_id, team_id, player_id and identify the row number for each instance
+        ROW_NUMBER() OVER (PARTITION BY game_id, team_id, player_id) AS row_num,
         gd.*
     FROM
         bootcamp.nba_game_details gd
 )
+-- select the first row from the game details CTE for each game_id, team_id, player_id combination
 select
     game_id,
     team_id,
