@@ -2,7 +2,7 @@
 insert into danfanderson48529.user_devices_cumulated
 -- cte to house the initial date
 with cfg as (
-    select date '2021-01-02' as start_date 
+    select date '2021-12-31' as start_date 
 ),
 -- cte to fetch yesterday's cumulative table data (if it exists)
 yday as (
